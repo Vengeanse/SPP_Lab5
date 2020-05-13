@@ -1,0 +1,46 @@
+<h2>Todo page</h2>
+{{#if isLogin}}
+	<ul>
+		<div id="todos"></div>
+	</ul>
+	{{#if fileLoaded}}
+		<form action="/change" method = "POST">
+			<h2>Uploaded file:</h2>
+			<p>Title: {{title}}</p>
+			<p>File: {{filename}}</p>
+			<input type="hidden" name="data" Id = "data" value="{{data}}">
+			<input type="hidden" Id = "title" value="{{title}}">
+			<input type="hidden" Id = "filename" value="{{filename}}">
+			<input type="hidden" Id = "file" value="{{file}}">
+			<input type="hidden" Id = "username" value="{{username}}">
+			<button type="submit">Change</button>
+		</form>
+		<br/>
+		<button type="submit" class="btn" id="send">Create</button>
+	{{else}}
+		<form action="/create" method = "POST" enctype="multipart/form-data">
+			<h2>Create TODO</h2>
+
+			<p>Todo title:</p>
+			<div class="input-field">
+				<input type="text" name="title" Id = "titleInput">
+			</div>
+			<p>File:</p>
+			<div class="input-field">
+		 		<input type="file" Id = "fileInput" name="Ufile" onchange="FileCheck(this)">
+			</div>
+			<input type="hidden" name="data" Id = "data" value={{data}}>
+			<button type="submit" class="btn">Load</button>
+		</form>
+	{{/if}}
+{{else}}
+	<p><a href="/login">Only registered users have access to todo list!</a></p>
+{{/if}}
+
+<br/>
+<button type="submit" class="btn" id="qraph">GraphTest</button>
+
+<script src="/FileCheck.js"></script>
+<script src="/FileSend.js"></script>
+<script src="/graphQL.js"></script>
+

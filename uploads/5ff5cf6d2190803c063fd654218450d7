@@ -1,0 +1,6 @@
+some RANDOM text
+G1tr9p0z1t0r1y
+
+USE `mydb`;
+INSERT user(User_Name, User_Password) 
+VALUES (123, 123123);
